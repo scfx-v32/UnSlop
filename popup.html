@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { 
+      width: 250px; padding: 20px; 
+      background: #111; color: white;
+      font-family: 'Segoe UI', sans-serif; 
+    }
+    h3 { margin-top: 0; color: #d6304c; text-transform: uppercase; }
+    button { 
+      width: 100%; margin-top: 10px; padding: 10px; cursor: pointer; 
+      background: #520C17; color: white; border: none; border-radius: 5px;
+      font-weight: bold; transition: 0.2s;
+    }
+    button:hover { background: #7a1324; }
+    .row { margin-bottom: 15px; }
+    label { font-size: 12px; color: #888; display: block; margin-bottom: 5px; }
+    input, select {
+        background: #222; border: 1px solid #333; color: white;
+        padding: 5px; width: 100%; border-radius: 4px;
+    }
+    .toggle-btn {
+      background: #444;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
+    }
+    .toggle-btn:hover {
+      background: #555;
+    }
+    .toggle-switch {
+      width: 40px;
+      height: 24px;
+      background: #520C17;
+      border-radius: 12px;
+      position: relative;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .toggle-switch.active {
+      background: #28a745;
+    }
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: 0.3s;
+    }
+    .toggle-switch.active::after {
+      left: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h3>UnSlop Control</h3>
+  
+  <div class="row">
+    <label>Feed Limit (Videos)</label>
+    <input type="number" id="limit" step="3" min="3" value="12">
+  </div>
+
+  <div class="row">
+    <label>Reset Frequency</label>
+    <select id="frequency">
+      <option value="never">Never</option>
+      <option value="daily">Every Day</option>
+      <option value="weekly">Every Week</option>
+      <option value="monthly">Every Month</option>
+    </select>
+  </div>
+
+  <div class="row" id="weekday-row" style="display:none">
+    <label>Weekday (for weekly)</label>
+    <select id="weekday">
+      <option value="0">Sunday</option>
+      <option value="1">Monday</option>
+      <option value="2">Tuesday</option>
+      <option value="3">Wednesday</option>
+      <option value="4">Thursday</option>
+      <option value="5">Friday</option>
+      <option value="6">Saturday</option>
+    </select>
+  </div>
+
+  <button id="toggle-unslop" class="toggle-btn">
+    <span>UnSlop Enabled</span>
+    <div class="toggle-switch"></div>
+  </button>
+
+  <button id="refresh">Refresh Feed</button>
+  
+  <button id="manage-wl">Manage Watch Later</button>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

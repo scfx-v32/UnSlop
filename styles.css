@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap');
+
+/* --- 1. MAROON THEME MODAL (Glassmorphism) --- */
+#unslop-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(82, 12, 23, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#unslop-modal h1 {
+  font-size: 4rem;
+  margin: 0;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+#unslop-modal p { font-size: 1.2rem; opacity: 0.8; margin-bottom: 40px; }
+
+#unslop-time-input {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.2);
+  color: white;
+  font-size: 2rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 120px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+#unslop-start-btn {
+  background: white;
+  color: #520C17;
+  border: none;
+  padding: 15px 50px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+#unslop-start-btn:hover { transform: scale(1.05); }
+
+/* --- 2. THE TIMER WIDGET --- */
+#unslop-timer-widget {
+  position: fixed;
+  top: 15px; right: 80px;
+  background: #520C17;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  z-index: 2500;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  cursor: move;
+}
+
+/* --- 3. THE VIDEO GRID (3 COLUMNS FIXED) --- */
+#unslop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 16px;
+  padding: 24px;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Ensure 3 columns even on smaller screens */
+@media (max-width: 2000px) {
+  #unslop-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* The Card Container */
+.unslop-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background: transparent;
+  transition: transform 0.15s;
+}
+
+.unslop-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Thumbnail Wrapper (16:9 Aspect Ratio) */
+.unslop-thumb-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: #222;
+}
+
+.unslop-thumb-wrapper img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.unslop-card:hover .unslop-thumb-wrapper img {
+  transform: scale(1.03);
+}
+
+/* Text Info */
+.unslop-info {
+  display: flex;
+  gap: 12px;
+  padding-right: 24px;
+}
+
+.unslop-avatar {
+  width: 36px; 
+  height: 36px;
+  border-radius: 50%;
+  background: #333;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.unslop-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.unslop-title {
+  color: #f1f1f1;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.unslop-meta {
+  color: #aaa;
+  font-size: 1rem;
+  font-family: "Roboto", Arial, sans-serif;
+  line-height: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.unslop-stats {
+  color: #999;
+  font-size: 0.9rem;
+  font-family: "Roboto", Arial, sans-serif;
+  line-height: 1.2rem;
+}
+
+/* --- 4. LOADING SPINNER --- */
+#unslop-loader {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99998;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.unslop-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#unslop-loader p {
+  font-size: 1.2rem;
+}
+
